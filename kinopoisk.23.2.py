@@ -9,22 +9,22 @@ def collect(user_login):
         url = f'https://www.kinopoisk.ru/user/{user_login}/votes/list/genre/serial/vs/vote/#list{page_num}'  # ссылка с пагинацией
         html_content = requests.get(url).text
         soup = BeautifulSoup(html_content, 'html.parser')
-        # Ищем карточки фильмов
+        # Ищем карточки сериала
         entries = soup.find_all('div', class_ = 'item')
         if len(entries) == 0:  # признак конца списка
             break
         for entry in entries:
             # В каждом элементе <div> ищем элемент с классом 'info'
-            # Название фильма и дата релиза
+            # Название сериала и дата релиза
             film_name_details = entry.find('div', class_ = "info")
             # Теперь, внутри info ищем элемент <a> и получаем его текстовое содержимое методом .text:
             film_name = film_name_details.find('a').text
-            # Рейтинк фильма
+            # Рейтинк сериала
             rating = entry.find('div', class_='rating')
             rating_span = rating.find('b',).text
             data.append({
-            'Название фильма и дата релиза': film_name,
-            'Рейтинг фильма': rating_span
+            'Название сериала и дата релиза': film_name,
+            'Рейтинг сериала': rating_span
             })
             page_num += 1
         return data
