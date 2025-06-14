@@ -14,5 +14,5 @@
 12) Прохомся по каждому элементу entries и получаем элемент rating в каждом элементе <div>, ищем элемент с классом 'rating': for entry in entries: rating = entry.find('div', class_='rating')
 13) Теперь, внутри rating ищем элемент <b> и получаем его текстовое содержимое методом .text:  rating_span = rating.find('b',).text
 14) Финальным этапом будет экспорт полученных данных в Excel. Для этого установливаем следующии библиотеки: pip install pandas openpyxl
-15) С помощью следующего кода осуществите запись в файл: user_rates = collect_user_rates(user_login='rfeldman9') df = pd.DataFrame(user_rates) df.to_excel('user_rates.xlsx')
+15) С помощью следующего кода  записываем в файл: user_rates = collect_user_rates(user_login='rfeldman9') df = pd.DataFrame(user_rates) df.to_excel('user_rates.xlsx')
 
